@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+. $(type -P go_runner.sh)
