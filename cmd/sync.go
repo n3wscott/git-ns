@@ -6,7 +6,7 @@ import (
 	"os/exec"
 )
 
-func Status(args []string) {
+func Sync(args []string) {
 	var (
 		cmdOut []byte
 		err    error
@@ -18,4 +18,5 @@ func Status(args []string) {
 	}
 
 	fmt.Println(string(cmdOut))
+	fmt.Println("TODO")
 }

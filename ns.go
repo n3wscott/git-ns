@@ -2,18 +2,16 @@ package main
 
 import (
 	"./cmd"
-	"fmt"
 	"os"
 )
 
 func main() {
-	fmt.Println("Hello, world! Args:")
-	s, sep := "", ""
-	for _, arg := range os.Args[1:] {
-		s += sep + arg
-		sep = " "
+	switch os.Args[1] {
+	case "sync":
+		cmd.Sync(os.Args[2:])
+	case "status":
+		cmd.Status(os.Args[2:])
+	default:
+		cmd.Help(os.Args[2:])
 	}
-	fmt.Println(s)
-
-	cmd.Status()
 }
