@@ -3,16 +3,16 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"os/exec"
 )
 
 func Sync(args []string) {
-	var (
-		cmdOut []byte
-		err    error
-	)
-	cmdArgs := []string{"status"}
-	if cmdOut, err = exec.Command("git", cmdArgs...).Output(); err != nil {
+	if HasPendingChanges() {
+		fmt.Fprintln(os.Stderr, "There are pending changes in the current branch.")
+		os.Exit(1)
+	}
+
+	cmdOut, err := RunCmd("git status")
+	if err != nil {
 		fmt.Fprintln(os.Stderr, "There was an error running git command: ", err)
 		os.Exit(1)
 	}
