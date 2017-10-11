@@ -8,6 +8,7 @@ import (
 )
 
 func RunCmd(cmdLine string) (string, error) {
+	fmt.Println(cmdLine)
 	cmdSplit := strings.Split(cmdLine, " ")
 	cmd := cmdSplit[0]
 	args := cmdSplit[1:]

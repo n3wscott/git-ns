@@ -11,12 +11,14 @@ func Sync(args []string) {
 		os.Exit(1)
 	}
 
-	cmdOut, err := RunCmd("git status")
-	if err != nil {
+	if _, err := RunCmd("git fetch upstream"); err != nil {
 		fmt.Fprintln(os.Stderr, "There was an error running git command: ", err)
 		os.Exit(1)
 	}
 
-	fmt.Println(string(cmdOut))
-	fmt.Println("TODO")
+	if _, err := RunCmd("git merge upstream/master"); err != nil {
+		fmt.Fprintln(os.Stderr, "There was an error running git command: ", err)
+		os.Exit(1)
+	}
+
 }
