@@ -17,7 +17,6 @@ func main() {
 	case "status":
 		cmd.Status(os.Args[2:])
 	case "sync":
-	case "s":
 		cmd.Sync(os.Args[2:])
 	default:
 		cmd.Help(os.Args[2:])
