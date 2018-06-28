@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"os/exec"
 	"strings"
@@ -28,4 +29,14 @@ func HasPendingChanges() bool {
 		return true
 	}
 	return false
+}
+
+const letterBytes = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+func RandString(n int) string {
+	b := make([]byte, n)
+	for i := range b {
+		b[i] = letterBytes[rand.Intn(len(letterBytes))]
+	}
+	return string(b)
 }

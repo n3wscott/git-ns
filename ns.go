@@ -7,6 +7,8 @@ import (
 
 func main() {
 	switch os.Args[1] {
+	case "branch":
+		cmd.Branch(os.Args[2:])
 	case "open":
 		cmd.Open(os.Args[2:])
 	case "status":
