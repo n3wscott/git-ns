@@ -16,7 +16,7 @@ func Sync(args []string) {
 		os.Exit(1)
 	}
 
-	if _, err := RunCmd("git merge upstream/master"); err != nil {
+	if _, err := RunCmd("git rebase upstream/master"); err != nil {
 		fmt.Fprintln(os.Stderr, "There was an error running git command: ", err)
 		os.Exit(1)
 	}
