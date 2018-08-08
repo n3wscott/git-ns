@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func Help(args []string) {
+func Help() {
 	fmt.Println("Use git ns sync or whatever")
 	fmt.Println(CheckoutHelp())
 	fmt.Println(OpenHelp())

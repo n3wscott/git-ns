@@ -6,7 +6,11 @@ import (
 )
 
 func main() {
-	switch os.Args[1] {
+	arg := ""
+	if len(os.Args) >= 2 {
+		arg = os.Args[1]
+	}
+	switch arg {
 	case "checkout", "branch", "co":
 		cmd.Checkout(os.Args[2:])
 	case "graph", "tree":
@@ -18,6 +22,6 @@ func main() {
 	case "sync":
 		cmd.Sync(os.Args[2:])
 	default:
-		cmd.Help(os.Args[2:])
+		cmd.Help()
 	}
 }
