@@ -5,6 +5,12 @@ import (
 	"os"
 )
 
+func CheckoutHelp() string {
+	return `checkout [branch_name]
+	Creates a branch, push with origin upstream set, and checkout that branch.
+	Example, checkout feature_leet`
+}
+
 func Checkout(args []string) {
 	defaultBranch := fmt.Sprintf("branch-%s", RandString(6))
 	branch := defaultBranch

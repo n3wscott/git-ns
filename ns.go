@@ -7,15 +7,11 @@ import (
 
 func main() {
 	switch os.Args[1] {
-	case "checkout":
-		fallthrough
-	case "branch":
-		fallthrough
-	case "co":
+	case "checkout", "branch", "co":
 		cmd.Checkout(os.Args[2:])
-	case "open":
-		fallthrough
-	case "o":
+	case "graph", "tree":
+		cmd.Graph(os.Args[2:])
+	case "open", "o":
 		cmd.Open(os.Args[2:])
 	case "status":
 		cmd.Status(os.Args[2:])

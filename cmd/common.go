@@ -9,7 +9,7 @@ import (
 )
 
 func RunCmd(cmdLine string) (string, error) {
-	fmt.Println(cmdLine)
+	fmt.Fprintln(os.Stderr, cmdLine)
 	cmdSplit := strings.Split(cmdLine, " ")
 	cmd := cmdSplit[0]
 	args := cmdSplit[1:]
