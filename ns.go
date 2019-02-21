@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./cmd"
+	"github.com/n3wscott/git-tools/cmd"
 	"os"
 )
 
