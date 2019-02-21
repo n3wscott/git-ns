@@ -4,4 +4,6 @@ TOOLS="${0%/*}"
 BASENAME="${0##*/}"
 SCRIPT="${SCRIPT-${BASENAME//git-/}.go}"
 
-go run $TOOLS/$SCRIPT $@
+#go run $TOOLS/$SCRIPT $@
+
+ns $@
