@@ -29,7 +29,7 @@ func Clone(args []string) {
 
 	parts := strings.Split(upstream, "/")
 
-	if len(parts) != 4 || parts[0] != "https:" {
+	if len(parts) != 5 || parts[0] != "https:" {
 		fmt.Fprintln(os.Stderr, "Not sure how to handle given url: ", upstream)
 		os.Exit(1)
 	}
