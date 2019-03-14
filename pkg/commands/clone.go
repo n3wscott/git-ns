@@ -57,11 +57,7 @@ func Clone(args []string) {
 		os.Exit(1)
 	}
 
-	if strings.Contains(orgLs, upstreamOrg+"\n") {
-		fmt.Fprintln(os.Stderr, "upstream org exists!")
-	} else {
-		fmt.Fprintln(os.Stderr, "need to make upstream org")
-
+	if !strings.Contains(orgLs, upstreamOrg+"\n") {
 		if _, err = RunCmdAt(fmt.Sprintf("mkdir %s", upstreamOrg), hostDir); err != nil {
 			fmt.Fprintln(os.Stderr, "There was an error running mkdir command: ", err)
 			os.Exit(1)
