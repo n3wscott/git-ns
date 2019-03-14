@@ -11,6 +11,8 @@ func main() {
 		arg = os.Args[1]
 	}
 	switch arg {
+	case "clone":
+		cmd.Clone(os.Args[2:])
 	case "checkout", "branch", "co":
 		cmd.Checkout(os.Args[2:])
 	case "graph", "tree":

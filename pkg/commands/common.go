@@ -8,13 +8,27 @@ import (
 	"strings"
 )
 
-func RunCmd(cmdLine string) (string, error) {
+func Cmd(cmdLine string) *exec.Cmd {
 	fmt.Fprintln(os.Stderr, cmdLine)
 	cmdSplit := strings.Split(cmdLine, " ")
 	cmd := cmdSplit[0]
 	args := cmdSplit[1:]
 
-	cmdOut, err := exec.Command(cmd, args...).Output()
+	return exec.Command(cmd, args...)
+}
+
+func RunCmd(cmdLine string) (string, error) {
+	cmd := Cmd(cmdLine)
+
+	cmdOut, err := cmd.Output()
+	return string(cmdOut), err
+}
+
+func RunCmdAt(cmdLine, dir string) (string, error) {
+	cmd := Cmd(cmdLine)
+	cmd.Dir = dir
+
+	cmdOut, err := cmd.Output()
 	return string(cmdOut), err
 }
 
