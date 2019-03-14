@@ -80,7 +80,7 @@ func Clone(args []string) {
 
 	repoDir := fmt.Sprintf("%s/%s", orgDir, repo)
 
-	if _, err = RunCmdAt(fmt.Sprintf("git remote add upstream %s", fork), repoDir); err != nil {
+	if _, err = RunCmdAt(fmt.Sprintf("git remote add upstream %s", upstream), repoDir); err != nil {
 		fmt.Fprintln(os.Stderr, "There was an error running git remote add upstream command: ", err)
 		os.Exit(1)
 	}
