@@ -7,7 +7,7 @@ import (
 
 func GraphHelp() string {
 	return `graph
-Example, graph`
+	Example, graph`
 }
 
 func Graph(args []string) {

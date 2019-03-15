@@ -1,6 +1,6 @@
 # ns git helper
 
-To install, from this directory: 
+To install, from this directory:
 
 ```bash
 echo \nPATH=`pwd`/bin:\$PATH \n>> ~/.profile
@@ -18,3 +18,7 @@ Don't forget to have git setup:
 git config --global user.name "Your Name"
 git config --global user.email your@email.com
 ```
+
+`git ns lint` requires:
+
+- prettier, needs npm to install: `npm install --global prettier`
