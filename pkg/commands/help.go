@@ -9,5 +9,7 @@ func Help() {
 	fmt.Println(CheckoutHelp())
 	fmt.Println(OpenHelp())
 	fmt.Println(GraphHelp())
+
 	fmt.Println(CloneHelp())
+	fmt.Println(LintHelp())
 }

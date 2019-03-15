@@ -17,6 +17,8 @@ func main() {
 		cmd.Checkout(os.Args[2:])
 	case "graph", "tree":
 		cmd.Graph(os.Args[2:])
+	case "lint":
+		cmd.Lint(os.Args[2:])
 	case "open", "o":
 		cmd.Open(os.Args[2:])
 	case "status":
