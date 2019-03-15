@@ -30,6 +30,11 @@ func Lint(args []string) {
 			continue
 		}
 
+		// file could have been deleted in the current diff.
+		if !Exists(v) {
+			continue
+		}
+
 		switch {
 		case strings.HasPrefix(v, "vendor/"):
 			continue

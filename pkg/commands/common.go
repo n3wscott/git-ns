@@ -8,8 +8,10 @@ import (
 	"strings"
 )
 
-func Cmd(cmdLine string) *exec.Cmd {
-	fmt.Fprintln(os.Stderr, cmdLine)
+func Cmd(cmdLine string, opts ...string) *exec.Cmd {
+	if len(opts) == 0 {
+		fmt.Fprintln(os.Stderr, cmdLine)
+	}
 	cmdSplit := strings.Split(cmdLine, " ")
 	cmd := cmdSplit[0]
 	args := cmdSplit[1:]
@@ -17,19 +19,28 @@ func Cmd(cmdLine string) *exec.Cmd {
 	return exec.Command(cmd, args...)
 }
 
-func RunCmd(cmdLine string) (string, error) {
-	cmd := Cmd(cmdLine)
+func RunCmd(cmdLine string, opts ...string) (string, error) {
+	cmd := Cmd(cmdLine, opts...)
 
 	cmdOut, err := cmd.Output()
 	return string(cmdOut), err
 }
 
-func RunCmdAt(cmdLine, dir string) (string, error) {
-	cmd := Cmd(cmdLine)
+func RunCmdAt(cmdLine, dir string, opts ...string) (string, error) {
+	cmd := Cmd(cmdLine, opts...)
 	cmd.Dir = dir
 
 	cmdOut, err := cmd.Output()
 	return string(cmdOut), err
+}
+
+func Exists(file string) bool {
+	if _, err := RunCmd(fmt.Sprintf("test -f %s", file), "quiet"); err != nil {
+		fmt.Fprintln(os.Stderr, "There was an error running test command: ", err)
+		return false
+	} else {
+		return true
+	}
 }
 
 func HasPendingChanges() bool {
