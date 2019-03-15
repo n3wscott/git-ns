@@ -17,7 +17,7 @@ func LintHelp() string {
 func Lint(args []string) {
 	var diffFiles string
 	var err error
-	if diffFiles, err = RunCmd("git diff --name-only master"); err != nil {
+	if diffFiles, err = RunCmd("git diff --name-only master", "quiet"); err != nil {
 		fmt.Fprintln(os.Stderr, "There was an error running git diff command: ", err)
 		os.Exit(1)
 	}
@@ -51,7 +51,7 @@ func Lint(args []string) {
 }
 
 func lintGo(file string) {
-	if changed, err := RunCmd(fmt.Sprintf("go fmt %s", file)); err != nil {
+	if changed, err := RunCmd(fmt.Sprintf("gofmt -s -w -l %s", file)); err != nil {
 		fmt.Fprintln(os.Stderr, "There was an error running git fmt command: ", err)
 		os.Exit(1)
 	} else if len(changed) > 0 {
