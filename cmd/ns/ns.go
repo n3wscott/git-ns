@@ -11,6 +11,8 @@ func main() {
 		arg = os.Args[1]
 	}
 	switch arg {
+	case "changelist", "cl":
+		cmd.ChangeList(os.Args[2:])
 	case "clone":
 		cmd.Clone(os.Args[2:])
 	case "checkout", "branch", "co":

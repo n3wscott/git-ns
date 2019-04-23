@@ -6,6 +6,7 @@ import (
 
 func Help() {
 	fmt.Println("Use git ns sync or whatever")
+	fmt.Println(ChangeListHelp())
 	fmt.Println(CheckoutHelp())
 	fmt.Println(OpenHelp())
 	fmt.Println(GraphHelp())
