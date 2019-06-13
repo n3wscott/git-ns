@@ -21,4 +21,5 @@ git config --global user.email your@email.com
 
 `git ns lint` requires:
 
-- prettier, needs npm to install: `npm install --global prettier`
+- `prettier`, needs npm to install: `npm install --global prettier`
+- `goimports`, install `go get golang.org/x/tools/cmd/goimports`

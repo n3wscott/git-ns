@@ -51,13 +51,29 @@ func Lint(args []string) {
 }
 
 func lintGo(file string) {
+	lintGoFmt(file)
+	lintGoImports(file)
+}
+
+func lintGoFmt(file string) {
 	if changed, err := RunCmd(fmt.Sprintf("gofmt -s -w -l %s", file)); err != nil {
+		fmt.Fprintln(os.Stderr, "There was an error running git fmt command: ", err)
+		os.Exit(1)
+	} else if len(changed) > 0 {
+		fmt.Fprintln(os.Stderr, "➡️ fmt", file)
+	} else {
+		fmt.Fprintln(os.Stderr, "✅ fmt", file)
+	}
+}
+
+func lintGoImports(file string) {
+	if changed, err := RunCmd(fmt.Sprintf("goimports -w -l %s", file)); err != nil {
 		fmt.Fprintln(os.Stderr, "There was an error running git fmt command: ", err)
 		os.Exit(1)
 	} else if len(changed) > 0 {
 		fmt.Fprintln(os.Stderr, "➡️ ", file)
 	} else {
-		fmt.Fprintln(os.Stderr, "✅", file)
+		fmt.Fprintln(os.Stderr, "✅ imports", file)
 	}
 }
 
