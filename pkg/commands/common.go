@@ -43,6 +43,17 @@ func Exists(file string) bool {
 	}
 }
 
+func DefaultBranch(remote string) string {
+	cmd := `git remote show upstream | grep "HEAD branch" | cut -d ":" -f 2`
+	out, err := exec.Command("bash", "-c", cmd).Output()
+	if err != nil {
+		return fmt.Sprintf("Failed to execute command: %s", cmd)
+	}
+	branch := string(out)
+	branch = strings.TrimSpace(branch)
+	return branch
+}
+
 func HasPendingChanges() bool {
 	cmdOut, err := RunCmd("git diff-index --name-only HEAD --")
 	if err != nil {

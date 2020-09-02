@@ -12,6 +12,10 @@ func CloneHelp() string {
 	Example: clone https://github.com/n3wscott/git-tools`
 }
 
+var alias = map[string]string{
+	"knative": "knative.dev",
+}
+
 func Clone(args []string) {
 	var err error
 	var forkOrg string

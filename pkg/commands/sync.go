@@ -16,7 +16,10 @@ func Sync(args []string) {
 		os.Exit(1)
 	}
 
-	if _, err := RunCmd("git rebase upstream/master"); err != nil {
+	branch := DefaultBranch("upstream")
+
+	// TODO: this assumes master, that is wrong. git remote show upstream | grep "HEAD branch" | cut -d ":" -f 2
+	if _, err := RunCmd("git rebase upstream/" + branch); err != nil {
 		fmt.Fprintln(os.Stderr, "There was an error running git command: ", err)
 		os.Exit(1)
 	}
