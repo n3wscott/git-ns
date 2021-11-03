@@ -1,8 +1,5 @@
-module github.com/n3wscott/git-tools
+module github.com/n3wscott/git-ns
 
-go 1.12
+go 1.17
 
-require (
-	github.com/client9/misspell v0.3.4
-	github.com/google/ko v0.0.0-20191101175503-be4e1ffdd62d // indirect
-)
+require github.com/client9/misspell v0.3.4

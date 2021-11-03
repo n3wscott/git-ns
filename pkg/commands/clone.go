@@ -9,7 +9,7 @@ import (
 func CloneHelp() string {
 	return `clone [upstream git url]
 	Clones and then sets upstream.
-	Example: clone https://github.com/n3wscott/git-tools`
+	Example: clone https://github.com/n3wscott/git-ns`
 }
 
 var alias = map[string]string{

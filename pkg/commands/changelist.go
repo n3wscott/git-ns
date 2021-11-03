@@ -14,7 +14,7 @@ func ChangeListHelp() string {
 func ChangeList(args []string) {
 	var diffFiles string
 	var err error
-	if diffFiles, err = RunCmd("git diff --name-only master", "quiet"); err != nil {
+	if diffFiles, err = RunCmd("git diff --name-only main", "quiet"); err != nil {
 		fmt.Fprintln(os.Stderr, "There was an error running git diff command: ", err)
 		os.Exit(1)
 	}

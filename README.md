@@ -3,7 +3,7 @@
 To install, from this directory:
 
 ```bash
-echo \nPATH=`pwd`/bin:\$PATH \n>> ~/.profile
+go install .
 ```
 
 Set your github fork repo repo:
